@@ -1,5 +1,5 @@
 var siteUrl = "https://wudou.must-try.me/";
-var imageUrl = 'http://wudou.must-try.me/';
+var imageUrl = 'https://wudou.must-try.me/';
 var globalSort = "views";
 var globalChannelId = undefined;
 var globalPage = 1;
