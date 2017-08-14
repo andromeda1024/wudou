@@ -1,0 +1,12 @@
+.navibar {
+    height:49px;
+    line-height:49px;
+}
+
+.navibar-item {
+    text-align: center;
+}
+
+.navibar-item.active{
+    color: rgba(24,103,194,.81);
+}
