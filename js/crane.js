@@ -1,3 +1,5 @@
+var siteUrl = "https://yj.must-try.me/";
+var imageUrl = 'http://cdne.pic.yj.must-try.me/';
 var globalSort = "views";
 var globalChannelId = undefined;
 var globalPage = 1;
@@ -109,15 +111,15 @@ function loadChannel(channelId,sort,page,callback){
     console.log("loadChannel");
     var url = "";
     if(sort=="views"){
-        url = "http://yj.must-try.me/most-popular/";
+        url = siteUrl+"/most-popular/";
     } else if(sort=="recent"){
-        url = "http://yj.must-try.me/newest-clips/";
+        url = siteUrl+"/newest-clips/";
     }
     if(channelId){
         if(sort=="views"){
-            url = "http://yj.must-try.me/search/views_"+channelId+"-";
+            url = siteUrl+"/search/views_"+channelId+"-";
         } else if(sort=="recent"){
-            url = "http://yj.must-try.me/search/recent_"+channelId+"-";
+            url = siteUrl+"/search/recent_"+channelId+"-";
         }
     }
 
@@ -126,9 +128,9 @@ function loadChannel(channelId,sort,page,callback){
         var d = $("<div>").css('display','none').html(dhtml);
         $('div.desktop-only div.video-item',d).each(function(index,video){
             var vo = {};
-            vo.link = 'http://yj.must-try.me'+$('a.frame',video).first().attr('href');
+            vo.link = siteUrl+$('a.frame',video).first().attr('href');
             vo.title = $('div.video-title a',video).first().text();
-            vo.image = 'http://cdne.pic.yj.must-try.me'+$('a.frame img.lazy',video).first().attr('data-original').replace('//cdne-pics.youjizz.com','');
+            vo.image = imageUrl+$('a.frame img.lazy',video).first().attr('data-original').replace('//cdne-pics.youjizz.com','');
             vo.time = $('span.time',video).first().text();
             vo.rating = $('select.video-bar-rating-view',video).first().attr('data-value');
             vo.views = $('span.views',video).first().text();
