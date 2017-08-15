@@ -1,6 +1,7 @@
 var channels = [
     {id: 'asian',name: '亚洲'}
     ,{id: 'teen',name: '少女'}
+    ,{id: 'cartoon',name: '卡通[新]'}
     ,{id: 'lesbian',name: '女同'}
     ,{id: 'amateur',name: '业余'}
     ,{id: 'milf',name: '熟女'}
@@ -119,7 +120,6 @@ var channels = [
     // ,{id: 'slut'}
     // ,{id: 'asslick'}
     // ,{id: 'pornstars'}
-    // ,{id: 'cartoon'}
     // ,{id: 'bbw'}
     // ,{id: 'masturbating'}
     // ,{id: 'caucasian'}
