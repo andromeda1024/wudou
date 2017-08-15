@@ -3,6 +3,7 @@ var imageUrl = 'https://cdne-pics.youjizz.com/';
 var globalSort = "views";
 var globalChannelId = undefined;
 var globalPage = 1;
+
 $(function () {
     ons.ready(function () {
         document.addEventListener('init', function (einit) {
@@ -10,7 +11,6 @@ $(function () {
                 $.each(channels,function(index,channel){
                     $("<ons-carousel-item>").addClass("navibar-item").attr("data",channel.id).text((channel.name?channel.name:channel.id)).appendTo("#navibar");
                 });
-                console.log('bind click to navibar-item');
                 $('.navibar-item').on('click', function (eclick) {
                     changeHomeNavi($(eclick.target));
                 });
@@ -18,11 +18,11 @@ $(function () {
                     if(globalSort=='views'){
                         globalSort='recent';
                         $('#btn-sort ons-icon').attr("icon","fa-clock-o");
-                        ons.notification.toast('按发布时间排列', { timeout: 2000 });
+                        ons.notification.toast('按时间排列', { timeout: 2000 });
                     }else{
                         globalSort='views';
                         $('#btn-sort ons-icon').attr("icon","fa-sort-amount-desc");
-                        ons.notification.toast('按视频人气排列', { timeout: 2000 });
+                        ons.notification.toast('按人气排列', { timeout: 2000 });
                     }
                     $("#video-list ons-list-item").remove();
                     loadChannel(globalChannelId,globalSort,1,function(vos){
@@ -60,8 +60,6 @@ function renderVos(vos,page){
     if(page>1&&page<=globalPage) return;
     var gd = $("<ons-gesture-detector>").attr("page",globalPage);
     $.each(vos,function(i,vo){
-        // console.log(vo);
-        // return;
         var li = $("<ons-list-item tappable longdivider link='"+vo.link+"'>").attr("page",globalPage);
         $("<div>").attr("page",globalPage).addClass("left").css("width","38%").html("<img src='"+vo.image+"' style='min-width:100%;max-width:100%;'>").appendTo(li);
         var vc = $("<div>").attr("page",globalPage).addClass("center").css("width","62%").html("<span style='position:absolute;top:12px;'>"+vo.title+"</span>").appendTo(li);
@@ -93,13 +91,13 @@ function showPlaylist(eclick){
 
         ons.openActionSheet(obj).then(function (index) { 
             if(index>-1){
-                console.log("select index : "+index+" : "+files[index].filename);
                 document.querySelector('#naviApp').pushPage('player.html', { data: { src: files[index].filename } });
             }
             
         })
     });
 }
+
 function changeHomeNavi(naviItem) {
     document.querySelector('#naviList').replacePage('channel.html', { data: { channelId: naviItem.attr('data') } });
     $('.navibar-item').removeClass('active');
